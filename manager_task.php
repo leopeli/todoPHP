@@ -8,7 +8,6 @@ function new_task($description, $status) {
 	return $insert_task;
 }
 
-
 function task_list() {
 	global $connect_todo;
 	$all_tasks = array();
@@ -26,9 +25,9 @@ function remove_task($id) {
 
 }
 
-function change_status($id, $status){
+function change_status($id, $status, $toggle){
 	global $connect_todo;
-	$change_status_query = "UPDATE task SET status = 2 WHERE id = $id";
+	$change_status_query = "UPDATE task SET status = $toggle WHERE id = $id";
 	return $change_status = mysqli_query($connect_todo, $change_status_query);
 }
 
