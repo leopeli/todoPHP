@@ -1,0 +1,27 @@
+.base{
+	background-color: #D3D3D3;
+	color: #101010;
+	font-family: 'Open Sans', sans-serif;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.title{
+	text-align: center;
+	color: blue;
+	padding-bottom: 1em;
+}
+
+.all-content{
+	text-align: center;
+}
+
+.task-form{
+	width: auto;
+	display: inline-block;
+	
+}
+
+.description{
+	margin-bottom: 3em;
+}
