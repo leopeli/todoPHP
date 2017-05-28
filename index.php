@@ -56,12 +56,11 @@
 				<?php
 			}
 			?>
-
-			<button onclick="hide_status_ative()" class="btn btn-outline-secondary">Concluídos</button>
-			<button onclick="hide_status_inative()" class="btn btn-outline-secondary">Ativos</button>
-			<button onclick="show_status()" class="btn btn-outline-secondary">Todos</button>
+			<button onclick="hide_status_ative()" class="btn btn-outline-secondary filter">Concluídos</button>
+			<button onclick="hide_status_inative()" class="btn btn-outline-secondary filter">Ativos</button>
+			<button onclick="show_status()" class="btn btn-outline-secondary filter">Todos</button>
 			<form method="POST" action="remove_all.php">
-				<button type="submit" class="btn btn-outline-secondary"></button>
+				<button type="submit" class="btn btn-outline-secondary filter">Limpar Concluídos</button>
 			</form>
 		</main>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
