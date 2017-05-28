@@ -36,3 +36,9 @@ function change_task($id, $description) {
 	$change_task_query = "UPDATE task SET description = '{$description}' WHERE id = {$id}";
 	return mysqli_query($connect_todo, $change_task_query);
 }
+
+function remove_inative_tasks() {
+	global $connect_todo;
+	$remove_inative_tasks_query = "DELETE FROM task WHERE status = 2";
+	mysqli_query($connect_todo, $remove_inative_tasks_query);
+}
