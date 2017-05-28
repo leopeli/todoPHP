@@ -57,8 +57,9 @@
 			}
 			?>
 
-			<button onclick="esconde_status_1()">Esconde</button>
-			<button onclick="mostra_status_1()">Mostra</button>
+			<button onclick="esconde_status_1()">Ativos</button>
+			<button onclick="mostra_status_1()">Todos</button>
+			<button onclick="esconde_status_2()">Completos</button>
 		</main>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/todo.js"></script>
