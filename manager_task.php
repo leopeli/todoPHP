@@ -1,5 +1,6 @@
 <?php
 include_once("connection.php");
+include_once("constants.php");
 
 function new_task($description, $status) {
 	global $connect_todo;
@@ -24,21 +25,21 @@ function remove_task($id) {
 	mysqli_query($connect_todo, $remove_task_query);
 }
 
-function change_status($id, $status, $toggle){
+function change_status($id, $toggle){
 	global $connect_todo;
 	$change_status_query = "UPDATE task SET status = $toggle WHERE id = $id";
 	$change_status = mysqli_query($connect_todo, $change_status_query);
 	return $change_status;
 }
 
-function change_task($id, $description) {
+function change_description($id, $description) {
 	global $connect_todo;
-	$change_task_query = "UPDATE task SET description = '{$description}' WHERE id = {$id}";
-	return mysqli_query($connect_todo, $change_task_query);
+	$change_description_query = "UPDATE task SET description = '$description' WHERE id = $id";
+	return mysqli_query($connect_todo, $change_description_query);
 }
 
-function remove_inative_tasks() {
+function remove_inative_description() {
 	global $connect_todo;
-	$remove_inative_tasks_query = "DELETE FROM task WHERE status = 2";
-	mysqli_query($connect_todo, $remove_inative_tasks_query);
+	$remove_inative_description_query = "DELETE FROM task WHERE status =" . STATUS_CONCLUIDO;
+	mysqli_query($connect_todo, $remove_inative_description_query);
 }

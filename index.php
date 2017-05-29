@@ -43,19 +43,17 @@ include_once('manager_task.php');
 						<input type="text" name="description" value="<?= $task['description'] ?>" class="form-control task-form" <?= $concluido ? 'readonly' : '' ?>>
 
 						<input type="submit" name="update_task" value="Alterar" class="btn btn-warning task-form">
-						
-						<!-- inicio toggle-->
+
 					</form>
 					<form method="POST" action="change_status.php" class="task-form">
 						<input type="hidden" name="id" value="<?= $task['id'] ?>">
 						<input type="hidden" name="status" value="<?= $task['status'] ?>">
-						<input type="submit" name="concluido" onclick="$('#task-<?= $task['id'] ?>-form').submit()" value= <?= $status == STATUS_ATIVO ? "Concluido" : "Reativar" ?> class = "btn btn-success task-form concluido">
+						<input type="submit" name="concluido" onclick="$('#task-<?= $task['id'] ?>-form').submit()" value= <?= !$concluido ? "Concluir" : "Reativar" ?> class = "btn btn-success task-form concluido">
 					</form>
-						<!--fim toggle-->
 
 					<form method="POST" action="remove_task.php" class="task-form">
 						<input type="hidden" name="id" value="<?= $task['id'] ?>">
-						<input type="submit" value="Fechar" class="btn btn-danger">
+						<input type="submit" value="Remover" class="btn btn-danger">
 					</form>
 				</div>
 
@@ -66,8 +64,8 @@ include_once('manager_task.php');
 			<button onclick="show_status_inative()" class="btn btn-outline-secondary filter">Concluídos</button>
 			<button onclick="show_status_ative()" class="btn btn-outline-secondary filter">Ativos</button>
 			<button onclick="show_all()" class="btn btn-outline-secondary filter">Todos</button>
-			<form method="POST" action="remove_all.php" class="filter">
-				<button type="submit" class="btn btn-outline-secondary filter">Limpar Concluídos</button>
+			<form method="POST" action="remove_inative.php" class="filter">
+				<button type="submit" class="btn btn-outline-secondary filter">Remover concluídos</button>
 			</form>
 		</main>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>

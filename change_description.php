@@ -3,5 +3,5 @@
 
 	$id = $_POST['id'];
 	$description = $_POST['description'];
-	change_task($id, $description);
+	change_description($id, $description);
 	header('Location: index.php');
