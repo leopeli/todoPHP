@@ -2,7 +2,7 @@
 	background-color: #D3D3D3;
 	color: #101010;
 	font-family: 'Open Sans', sans-serif;
-	width: 50%;
+	width: 55%;
 	margin: 0 auto;
 }
 
@@ -26,3 +26,12 @@
 	margin-bottom: 3em;
 }
 
+.filter{
+	width: auto;
+	display: inline-block;
+	font-size: 10pt;
+}
+
+.concluido {
+	min-width: 90px;
+}

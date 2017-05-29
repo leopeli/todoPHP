@@ -1,3 +1,8 @@
+<?php
+include_once('constants.php');
+include_once('manager_task.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,35 +22,36 @@
 			<form method="POST" action="new_task.php" class="description">
 				<input type="list" name="description" class="form-control" placeholder="O que precisa fazer?">
 			</form>
-			<?php
-			include_once("manager_task.php");
-
-			?>
 
 			<?php
 			$listagem = task_list();
-			$count = 0;
+			$count_tasks_actives = 0;
 			foreach ($listagem as $task) {
-				if ($task['status'] == 2) {
-					$count++;
+				$status = $task['status'];
+				$concluido = $task['status'] == STATUS_CONCLUIDO;
+				if (!$concluido) {
+					$count_tasks_actives++;
 				}
+
 
 				?>
 				<div id="task-<?= $task['id'] ?>" class="status-<?= $task['status'] ?> task_list">
 
-
 					<form method="POST" action="change_description.php" class="task-form">
 						<input type="hidden" name="id" value="<?= $task['id'] ?>">
 
-						<input type="text" name="description" value="<?= $task['description'] ?>" class="form-control task-form">
+						<input type="text" name="description" value="<?= $task['description'] ?>" class="form-control task-form" <?= $concluido ? 'readonly' : '' ?>>
 
 						<input type="submit" name="update_task" value="Alterar" class="btn btn-warning task-form">
-
+						
+						<!-- inicio toggle-->
 					</form>
-					<form id="task-<?= $task['id'] ?>-form" method="POST" action="change_status.php" class="task-form">
+					<form method="POST" action="change_status.php" class="task-form">
 						<input type="hidden" name="id" value="<?= $task['id'] ?>">
-						<input type="submit" name="status" onclick="$('#task-<?= $task['id'] ?>-form').submit()" value="Concluido" class="btn btn-success">
+						<input type="hidden" name="status" value="<?= $task['status'] ?>">
+						<input type="submit" name="concluido" onclick="$('#task-<?= $task['id'] ?>-form').submit()" value= <?= $status == STATUS_ATIVO ? "Concluido" : "Reativar" ?> class = "btn btn-success task-form concluido">
 					</form>
+						<!--fim toggle-->
 
 					<form method="POST" action="remove_task.php" class="task-form">
 						<input type="hidden" name="id" value="<?= $task['id'] ?>">
@@ -56,10 +62,11 @@
 				<?php
 			}
 			?>
-			<button onclick="hide_status_ative()" class="btn btn-outline-secondary filter">Concluídos</button>
-			<button onclick="hide_status_inative()" class="btn btn-outline-secondary filter">Ativos</button>
-			<button onclick="show_status()" class="btn btn-outline-secondary filter">Todos</button>
-			<form method="POST" action="remove_all.php">
+			<label>Ativos <span class="badge filter"><?= $count_tasks_actives?></span></label>
+			<button onclick="show_status_inative()" class="btn btn-outline-secondary filter">Concluídos</button>
+			<button onclick="show_status_ative()" class="btn btn-outline-secondary filter">Ativos</button>
+			<button onclick="show_all()" class="btn btn-outline-secondary filter">Todos</button>
+			<form method="POST" action="remove_all.php" class="filter">
 				<button type="submit" class="btn btn-outline-secondary filter">Limpar Concluídos</button>
 			</form>
 		</main>

@@ -22,13 +22,13 @@ function remove_task($id) {
 	global $connect_todo;
 	$remove_task_query = "DELETE FROM task WHERE id = $id";
 	mysqli_query($connect_todo, $remove_task_query);
-
 }
 
 function change_status($id, $status, $toggle){
 	global $connect_todo;
 	$change_status_query = "UPDATE task SET status = $toggle WHERE id = $id";
-	return $change_status = mysqli_query($connect_todo, $change_status_query);
+	$change_status = mysqli_query($connect_todo, $change_status_query);
+	return $change_status;
 }
 
 function change_task($id, $description) {

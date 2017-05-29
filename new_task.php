@@ -1,7 +1,8 @@
 <?php
 	include_once("manager_task.php");
+	include_once("constants.php");
 
 	$description = $_POST['description'];
-	$status = 1;
+	$status = STATUS_ATIVO;
 	new_task($description, $status);
 	header('Location: index.php');
