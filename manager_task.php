@@ -38,8 +38,8 @@ function change_description($id, $description) {
 	return mysqli_query($connect_todo, $change_description_query);
 }
 
-function remove_inative_description() {
+function remove_inative() {
 	global $connect_todo;
-	$remove_inative_description_query = "DELETE FROM task WHERE status =" . STATUS_CONCLUIDO;
-	mysqli_query($connect_todo, $remove_inative_description_query);
+	$remove_inative_query = "DELETE FROM task WHERE status =" . STATUS_CONCLUIDO;
+	mysqli_query($connect_todo, $remove_inative_query);
 }

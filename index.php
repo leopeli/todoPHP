@@ -48,7 +48,7 @@ include_once('manager_task.php');
 					<form method="POST" action="change_status.php" class="task-form">
 						<input type="hidden" name="id" value="<?= $task['id'] ?>">
 						<input type="hidden" name="status" value="<?= $task['status'] ?>">
-						<input type="submit" name="concluido" onclick="$('#task-<?= $task['id'] ?>-form').submit()" value= <?= !$concluido ? "Concluir" : "Reativar" ?> class = "btn btn-success task-form concluido">
+						<input type="submit" name="concluido" value= <?= !$concluido ? "Concluir" : "Reativar" ?> class = "btn btn-success task-form concluido">
 					</form>
 
 					<form method="POST" action="remove_task.php" class="task-form">
